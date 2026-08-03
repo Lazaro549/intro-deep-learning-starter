@@ -37,8 +37,12 @@ That's the actual takeaway from the lesson, not just the API syntax.
 git clone https://github.com/lazaro549/intro-deep-learning-starter.git
 cd intro-deep-learning-starter
 pip install -r requirements.txt
-jupyter notebook notebooks/intro_to_deep_learning.ipynb
+jupyter lab notebooks/intro_to_deep_learning.ipynb
 ```
+
+If you'd rather use the classic Notebook interface: `jupyter notebook notebooks/intro_to_deep_learning.ipynb`
+(needs the `notebook` package from requirements.txt — some environments don't pull it in just from
+`pip install jupyter`).
 
 Tested with Python 3.12.3, TensorFlow 2.21.0, Keras 3.15.1, scikit-learn 1.8.0, pandas 3.0.2.
 

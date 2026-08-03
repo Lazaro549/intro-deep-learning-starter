@@ -4,3 +4,5 @@ pandas>=2.0
 numpy>=1.26
 matplotlib>=3.8
 jupyter>=1.0
+notebook>=7.0
+jupyterlab>=4.0
