@@ -64,6 +64,16 @@ Tested with Python 3.12.3, TensorFlow 2.21.0, Keras 3.15.1, scikit-learn 1.8.0, 
 Kaggle "Intro to Deep Learning" — completed by Lazaro Gomez Vitolo, August 3, 2026. See
 [`certificate/`](certificate/).
 
+## 💸 Donations
+
+If you'd like to support this project:
+
+- 🇦🇷 ARS (Argentina)  
+  Alias: `lazaro.503.alaba.mp`
+
+- 🌎 USD (Argentina, local transfers only)  
+  Alias: `ahogada.duras.foca`
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
