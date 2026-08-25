@@ -1,5 +1,7 @@
 # Intro to Deep Learning — TensorFlow & Keras on Structured Data
 
+[![CI](https://github.com/Lazaro549/intro-deep-learning-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/Lazaro549/intro-deep-learning-starter/actions/workflows/ci.yml)
+
 ![Kaggle certificate — Intro to Deep Learning](certificate/kaggle-intro-to-deep-learning-certificate.png)
 
 A hands-on companion to Kaggle Learn's **[Intro to Deep Learning](https://www.kaggle.com/learn/intro-to-deep-learning)**
