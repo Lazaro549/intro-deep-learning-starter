@@ -1,7 +1,8 @@
 {
   "project": "intro-deep-learning-starter",
-  "evaluation_version": "1.1",
+  "evaluation_version": "1.2",
   "evaluation_type": "portfolio_project",
+
   "scope": {
     "notebook": "notebooks/intro_to_deep_learning.ipynb",
     "tasks": [
@@ -11,63 +12,58 @@
       "regularization_comparison"
     ]
   },
+
   "methodology": {
     "regression_dataset": "sklearn.datasets.load_diabetes",
     "classification_dataset": "sklearn.datasets.load_breast_cancer",
-    "validation_strategy": "80/20 train-validation split",
-    "random_state": 0,
-    "preprocessing": "StandardScaler fitted only on training data",
     "framework": "TensorFlow/Keras",
-    "evaluation_principle": "Compare baseline, neural-network, optimization, and regularization approaches"
+    "random_state": 0,
+    "preprocessing": "StandardScaler fitted only on training data"
   },
-  "criteria": {
-    "reproducibility": {
-      "score": 9.5,
-      "weight": 0.15
+
+  "evaluation": {
+    "cross_validation": {
+      "status": "implemented",
+      "regression": "5-fold KFold",
+      "classification": "5-fold StratifiedKFold",
+      "reports": [
+        "mean",
+        "standard_deviation"
+      ]
     },
-    "data_preprocessing": {
-      "score": 9,
-      "weight": 0.10
-    },
-    "modeling": {
-      "score": 9,
-      "weight": 0.15
-    },
-    "training_and_optimization": {
-      "score": 9,
-      "weight": 0.10
-    },
-    "overfitting_analysis": {
-      "score": 9,
-      "weight": 0.15
-    },
-    "regularization_analysis": {
-      "score": 9,
-      "weight": 0.15
-    },
-    "evaluation_metrics": {
-      "score": 8.5,
-      "weight": 0.10
-    },
-    "documentation": {
-      "score": 9,
-      "weight": 0.10
+
+    "held_out_test": {
+      "status": "implemented",
+      "test_size": 0.2,
+      "random_state": 0,
+      "test_set_used_for_model_selection": false,
+      "regression_metrics": [
+        "MAE",
+        "RMSE",
+        "R2"
+      ],
+      "classification_metrics": [
+        "accuracy",
+        "precision",
+        "recall",
+        "F1",
+        "ROC-AUC"
+      ]
     }
   },
-  "overall_score": 9.1,
-  "score_scale": "0-10",
+
   "automation": {
     "unit_tests": {
       "status": "implemented",
       "command": "pytest -q"
     },
+
     "notebook_smoke_test": {
       "status": "implemented",
       "tool": "jupyter nbconvert",
-      "notebook": "notebooks/intro_to_deep_learning.ipynb",
-      "execution_mode": "full notebook execution",
       "timeout_seconds": 600
     },
+
     "continuous_integration": {
       "status": "implemented",
       "workflow": ".github/workflows/ci.yml",
@@ -77,98 +73,36 @@
       ]
     }
   },
+
   "quality_checks": {
-    "data_leakage": {
-      "status": "pass",
-      "note": "Scalers are fitted only on training data."
-    },
-    "reproducibility": {
-      "status": "pass",
-      "note": "Fixed random state and TensorFlow seed are defined."
-    },
-    "early_stopping": {
-      "status": "pass",
-      "note": "EarlyStopping with restore_best_weights is used in relevant experiments."
-    },
-    "model_comparison": {
-      "status": "pass",
-      "note": "Multiple architectures and regularization strategies are compared."
-    },
-    "metrics": {
-      "status": "pass",
-      "note": "Regression and classification use task-appropriate metrics."
-    },
-    "unit_tests": {
-      "status": "pass",
-      "note": "Automated tests cover preprocessing, model outputs, architecture properties, and evaluation metrics."
-    },
-    "notebook_execution": {
-      "status": "pass",
-      "note": "The notebook is executed automatically in CI as a smoke test."
-    },
-    "independent_test_set": {
-      "status": "not_available",
-      "note": "The notebook primarily uses train-validation evaluation rather than a separate held-out test set."
-    }
+    "data_leakage": "pass",
+    "reproducibility": "pass",
+    "early_stopping": "pass",
+    "model_comparison": "pass",
+    "unit_tests": "implemented",
+    "notebook_execution": "implemented",
+    "independent_test_set": "implemented"
   },
+
   "limitations": [
     "The datasets are small and come from scikit-learn.",
-    "Results depend on a single train-validation split.",
-    "No independent held-out test set is used.",
-    "The project focuses on educational deep-learning fundamentals rather than production deployment.",
     "Hyperparameter search is limited.",
-    "No external benchmark or cross-validation study is included."
+    "The project focuses on educational deep-learning fundamentals rather than production deployment.",
+    "No external benchmark is included."
   ],
+
   "portfolio_assessment": {
     "technical_depth": "strong deep-learning fundamentals",
     "experimental_quality": "strong",
     "testing": "strong",
     "continuous_integration": "strong",
     "reproducibility": "very strong",
-    "production_readiness": "moderate",
-    "documentation": "strong",
     "overall_positioning": "reproducible and tested hands-on deep-learning project"
   },
+
   "recommended_next_steps": [
-    "Add a dedicated held-out test set or cross-validation.",
-    "Persist actual experiment metrics generated by the notebook.",
-    "Add confidence intervals or repeated-split analysis.",
+    "Run cross-validation and persist actual metrics.",
+    "Run held-out evaluation and persist actual metrics.",
     "Optionally publish the latest CI status in the README."
   ]
-}
-"cross_validation": {
-  "status": "implemented",
-  "strategy": {
-    "regression": "5-fold KFold",
-    "classification": "5-fold StratifiedKFold"
-  },
-  "random_state": 0,
-  "reports": [
-    "mean",
-    "standard_deviation"
-  ]
-}
-"held_out_test": {
-  "status": "implemented",
-  "test_size": 0.20,
-  "random_state": 0,
-  "strategy": {
-    "regression": "80/20 development-test split",
-    "classification": "80/20 stratified development-test split"
-  },
-  "metrics": {
-    "regression": [
-      "MAE",
-      "RMSE",
-      "R2"
-    ],
-    "classification": [
-      "accuracy",
-      "precision",
-      "recall",
-      "F1",
-      "ROC-AUC"
-    ]
-  },
-  "test_set_used_for_model_selection": false
 }
