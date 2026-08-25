@@ -84,7 +84,7 @@ The project includes automated evaluation and testing:
 
 Run the tests locally:
 
-    ```bash
+    
     pytest -q
 ## Certificate
 
