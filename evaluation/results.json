@@ -148,3 +148,27 @@
     "standard_deviation"
   ]
 }
+"held_out_test": {
+  "status": "implemented",
+  "test_size": 0.20,
+  "random_state": 0,
+  "strategy": {
+    "regression": "80/20 development-test split",
+    "classification": "80/20 stratified development-test split"
+  },
+  "metrics": {
+    "regression": [
+      "MAE",
+      "RMSE",
+      "R2"
+    ],
+    "classification": [
+      "accuracy",
+      "precision",
+      "recall",
+      "F1",
+      "ROC-AUC"
+    ]
+  },
+  "test_set_used_for_model_selection": false
+}
