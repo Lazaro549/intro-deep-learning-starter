@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "**.py"
+      - "**.ipynb"
       - "tests/**"
       - "requirements.txt"
       - ".github/workflows/ci.yml"
@@ -15,6 +16,7 @@ on:
       - main
     paths:
       - "**.py"
+      - "**.ipynb"
       - "tests/**"
       - "requirements.txt"
       - ".github/workflows/ci.yml"
@@ -43,3 +45,43 @@ jobs:
       - name: Run tests
         run: |
           pytest -q
+
+  notebook-smoke-test:
+    name: Notebook smoke test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install nbconvert ipykernel
+
+      - name: Register Python kernel
+        run: |
+          python -m ipykernel install --user \
+            --name python3 \
+            --display-name "Python 3"
+
+      - name: Execute notebook
+        run: |
+          jupyter nbconvert \
+            --to notebook \
+            --execute \
+            --ExecutePreprocessor.timeout=600 \
+            --ExecutePreprocessor.kernel_name=python3 \
+            notebooks/intro_to_deep_learning.ipynb \
+            --output /tmp/intro_to_deep_learning.executed.ipynb
+
+      - name: Verify executed notebook
+        run: |
+          test -f /tmp/intro_to_deep_learning.executed.ipynb
