@@ -50,17 +50,42 @@ Tested with Python 3.12.3, TensorFlow 2.21.0, Keras 3.15.1, scikit-learn 1.8.0, 
 
 ## Repo structure
 
-```
+```text
 .
+├── .github/
+│   └── workflows/
+│       └── ci.yml
 ├── certificate/
 │   └── kaggle-intro-to-deep-learning-certificate.png
+├── evaluation/
+│   ├── cross_validation.py
+│   ├── held_out_test.py
+│   ├── evaluation_report.md
+│   └── results.json
 ├── notebooks/
 │   └── intro_to_deep_learning.ipynb
+├── tests/
+│   ├── test_data_preprocessing.py
+│   ├── test_model_architecture.py
+│   └── test_evaluation_metrics.py
 ├── requirements.txt
 ├── LICENSE
 └── .gitignore
 ```
+## Evaluation & Testing
 
+The project includes automated evaluation and testing:
+
+- **5-fold cross-validation** for regression and classification.
+- **Held-out test set** for final evaluation.
+- **Unit tests** covering preprocessing, model architecture, and metrics.
+- **Notebook smoke test** executed automatically in CI.
+- **GitHub Actions CI** validates tests and notebook execution.
+
+Run the tests locally:
+
+    ```bash
+    pytest -q
 ## Certificate
 
 Kaggle "Intro to Deep Learning" — completed by Lazaro Gomez Vitolo, August 3, 2026. See
