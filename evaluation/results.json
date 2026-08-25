@@ -136,3 +136,15 @@
     "Optionally publish the latest CI status in the README."
   ]
 }
+"cross_validation": {
+  "status": "implemented",
+  "strategy": {
+    "regression": "5-fold KFold",
+    "classification": "5-fold StratifiedKFold"
+  },
+  "random_state": 0,
+  "reports": [
+    "mean",
+    "standard_deviation"
+  ]
+}
