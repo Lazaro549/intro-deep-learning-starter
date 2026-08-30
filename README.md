@@ -4,6 +4,7 @@
 
 ![Kaggle certificate — Intro to Deep Learning](certificate/kaggle-intro-to-deep-learning-certificate.png)
 
+![Notebook](docs/images/notebooks.png)
 A hands-on companion to Kaggle Learn's **[Intro to Deep Learning](https://www.kaggle.com/learn/intro-to-deep-learning)**
 course (instructor: Ryan Holbrook), rebuilding all six lessons with `tf.keras` on real structured/tabular data
 instead of just reading along.
