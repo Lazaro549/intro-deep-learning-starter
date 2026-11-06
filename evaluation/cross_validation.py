@@ -6,7 +6,6 @@ fold's evaluation partition.
 """
 
 import numpy as np
-import tensorflow as tf
 
 from sklearn.datasets import load_breast_cancer, load_diabetes
 from sklearn.metrics import (
@@ -68,7 +67,7 @@ def evaluate_regression():
             callbacks=[make_early_stopping()],
             verbose=0,
         )
-        predictions = model.predict(X_test, verbose=0).reshape(-1)
+        predictions = model(X_test, training=False).numpy().reshape(-1)
 
         fold_metrics.append(
             {
@@ -110,7 +109,7 @@ def evaluate_classification():
             callbacks=[make_early_stopping()],
             verbose=0,
         )
-        probabilities = model.predict(X_test, verbose=0).reshape(-1)
+        probabilities = model(X_test, training=False).numpy().reshape(-1)
         predictions = (probabilities >= 0.5).astype(int)
 
         fold_metrics.append(
