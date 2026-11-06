@@ -6,10 +6,18 @@ from tensorflow.keras import layers
 
 
 RANDOM_STATE = 0
-EPOCHS = 200
-BATCH_SIZE = 32
+EPOCHS = 100
+BATCH_SIZE = 128
 VALIDATION_SPLIT = 0.15
-PATIENCE = 15
+PATIENCE = 8
+
+# Keep CPU execution predictable in constrained environments such as Codespaces.
+try:
+    tf.config.threading.set_intra_op_parallelism_threads(2)
+    tf.config.threading.set_inter_op_parallelism_threads(2)
+except RuntimeError:
+    # TensorFlow may already be initialized by the importing application.
+    pass
 
 
 def reset_seed():
