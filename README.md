@@ -61,6 +61,8 @@ Tested with Python 3.12.3, TensorFlow 2.21.0, Keras 3.15.1, scikit-learn 1.8.0, 
 ├── evaluation/
 │   ├── cross_validation.py
 │   ├── held_out_test.py
+│   ├── models.py
+│   ├── run_evaluation.py
 │   ├── evaluation_report.md
 │   └── results.json
 ├── notebooks/
@@ -96,7 +98,27 @@ python -m evaluation.run_evaluation
 
 <!-- EVALUATION-METRICS:START -->
 
-_Results not generated yet. Run the command above to populate this table with measured metrics._
+### Regression — Diabetes dataset
+
+| Metric | 5-fold CV (mean ± std) | Held-out test (n=89) |
+|---|---:|---:|
+| MAE | 48.8836 ± 4.2905 | 46.1653 |
+| RMSE | 62.3458 ± 4.9176 | 61.1373 |
+| R² | 0.3334 ± 0.1246 | 0.2711 |
+
+### Binary classification — Breast Cancer dataset
+
+| Metric | 5-fold CV (mean ± std) | Held-out test (n=114) |
+|---|---:|---:|
+| Accuracy | 0.9649 ± 0.0229 | 0.9649 |
+| Precision | 0.9720 ± 0.0155 | 0.9595 |
+| Recall | 0.9720 ± 0.0249 | 0.9861 |
+| F1 | 0.9719 ± 0.0184 | 0.9726 |
+| ROC-AUC | 0.9939 ± 0.0048 | 0.9917 |
+
+_Generated: 2026-11-06 06:04:46 UTC · TensorFlow 2.22.0-rc0 · Python 3.14.2 · scikit-learn 1.9.1._
+
+_Cross-validation values are mean ± standard deviation across five folds. Held-out metrics are from the independent 20% test split._
 
 <!-- EVALUATION-METRICS:END -->
 
