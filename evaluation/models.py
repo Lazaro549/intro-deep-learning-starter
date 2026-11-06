@@ -29,7 +29,7 @@ def build_regression_model(input_dim: int) -> keras.Model:
     )
     model.compile(
         optimizer=keras.optimizers.Adam(),
-        loss="mse",
+        loss="mae",
         metrics=[keras.metrics.MeanAbsoluteError(name="mae")],
     )
     return model
