@@ -61,7 +61,7 @@ def evaluate_regression():
         verbose=0,
     )
 
-    predictions = model.predict(X_test, verbose=0).reshape(-1)
+    predictions = model(X_test, training=False).numpy().reshape(-1)
     return {
         "test_samples": len(y_test),
         "mae": float(mean_absolute_error(y_test, predictions)),
@@ -96,7 +96,7 @@ def evaluate_classification():
         verbose=0,
     )
 
-    probabilities = model.predict(X_test, verbose=0).reshape(-1)
+    probabilities = model(X_test, training=False).numpy().reshape(-1)
     predictions = (probabilities >= 0.5).astype(int)
     return {
         "test_samples": len(y_test),
