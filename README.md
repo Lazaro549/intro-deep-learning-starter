@@ -78,10 +78,27 @@ Tested with Python 3.12.3, TensorFlow 2.21.0, Keras 3.15.1, scikit-learn 1.8.0, 
 The project includes automated evaluation and testing:
 
 - **5-fold cross-validation** for regression and classification.
+- **Shared TensorFlow/Keras architectures** across cross-validation and held-out evaluation.
 - **Held-out test set** for final evaluation.
 - **Unit tests** covering preprocessing, model architecture, and metrics.
 - **Notebook smoke test** executed automatically in CI.
 - **GitHub Actions CI** validates tests and notebook execution.
+
+
+
+### Latest model metrics
+
+The table below is generated from actual model runs. To reproduce the results and refresh this table, run:
+
+```bash
+python -m evaluation.run_evaluation
+```
+
+<!-- EVALUATION-METRICS:START -->
+
+_Results not generated yet. Run the command above to populate this table with measured metrics._
+
+<!-- EVALUATION-METRICS:END -->
 
 Run the tests locally:
 
