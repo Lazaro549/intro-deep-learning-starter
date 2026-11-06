@@ -1,7 +1,77 @@
 {
+  "generated_at": "2026-11-06T06:04:46+00:00",
   "project": "intro-deep-learning-starter",
-  "status": "pending_execution",
-  "note": "This file is populated with measured metrics by `python -m evaluation.run_evaluation`. No metric values are fabricated or copied from incomplete earlier runs.",
-  "cross_validation": null,
-  "held_out_test": null
+  "framework": "TensorFlow/Keras",
+  "environment": {
+    "python": "3.14.2",
+    "tensorflow": "2.22.0-rc0",
+    "scikit_learn": "1.9.1"
+  },
+  "configuration": {
+    "random_state": 0,
+    "cross_validation_folds": 5,
+    "held_out_test_size": 0.2,
+    "epochs_max": 100,
+    "batch_size": 128,
+    "early_stopping_patience": 8,
+    "validation_split": 0.15
+  },
+  "datasets": {
+    "regression": "sklearn.datasets.load_diabetes",
+    "classification": "sklearn.datasets.load_breast_cancer"
+  },
+  "cross_validation": {
+    "regression": {
+      "mae": {
+        "mean": 48.88363973395452,
+        "std": 4.290527756642703
+      },
+      "rmse": {
+        "mean": 62.34577626459641,
+        "std": 4.917555925982117
+      },
+      "r2": {
+        "mean": 0.33335778876372146,
+        "std": 0.1245513615173954
+      }
+    },
+    "classification": {
+      "accuracy": {
+        "mean": 0.9648657040832169,
+        "std": 0.022856715932671245
+      },
+      "precision": {
+        "mean": 0.9720169062422584,
+        "std": 0.01554922627274817
+      },
+      "recall": {
+        "mean": 0.9720266040688574,
+        "std": 0.024867984194346902
+      },
+      "f1": {
+        "mean": 0.9719277202013317,
+        "std": 0.018423572236116556
+      },
+      "roc_auc": {
+        "mean": 0.9938619442754719,
+        "std": 0.0048353173656243515
+      }
+    }
+  },
+  "held_out_test": {
+    "regression": {
+      "test_samples": 89,
+      "mae": 46.16526833009184,
+      "rmse": 61.13725391059941,
+      "r2": 0.2710965280340265
+    },
+    "classification": {
+      "test_samples": 114,
+      "accuracy": 0.9649122807017544,
+      "precision": 0.9594594594594594,
+      "recall": 0.9861111111111112,
+      "f1": 0.9726027397260274,
+      "roc_auc": 0.9917328042328043
+    }
+  }
 }
