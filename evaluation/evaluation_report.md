@@ -329,9 +329,12 @@ Consequently, the experiments should not be interpreted as evidence that neural 
 
 ### Validation Strategy
 
-The experiments primarily use a train/validation split.
+The evaluation code now includes two complementary approaches:
 
-A dedicated test set or cross-validation would provide stronger estimates of generalization.
+* **5-fold cross-validation:** each fold fits its own `StandardScaler` using only that fold's training partition. Early stopping uses a validation split taken from the training partition, not the fold's evaluation partition.
+* **Independent held-out test set:** a separate 20% split is reserved for final evaluation. The scaler is fitted on the development partition and then applied to the test partition. For classification, the split is stratified.
+
+These approaches provide more information about model generalization than a single train/validation split. The results are recorded in `evaluation/results.json` and summarized in the repository README.
 
 ### Hyperparameter Search
 
@@ -384,18 +387,16 @@ The project should be considered a **strong educational deep learning portfolio 
 
 ## 17. Recommended Future Improvements
 
-The following improvements would increase the project's portfolio value without changing its educational focus:
+The following improvements would further increase the project's portfolio value without changing its educational focus:
 
-1. Add automated tests for preprocessing and model output shapes.
-2. Add a machine-readable `results.json`.
-3. Add a dedicated test split for final model evaluation.
-4. Add confidence intervals or repeated runs for more robust comparisons.
-5. Add GitHub Actions for automated validation.
-6. Add a small reusable Python module for preprocessing and model construction.
-7. Compare the neural networks against traditional baselines such as linear regression and logistic regression.
-8. Record experiment configuration and final metrics systematically.
+1. Add repeated runs with different random seeds or confidence intervals to quantify variation beyond the current five-fold cross-validation standard deviation.
+2. Compare the neural networks against traditional baselines such as linear regression and logistic regression.
+3. Extend the automated tests to cover the complete evaluation pipeline and verify that preprocessing is fitted only on training data.
+4. Add a class-wise confusion matrix and clearly explain which class is treated as positive in the breast-cancer classification experiment.
 
-These improvements are optional and should not compromise the repository's primary educational purpose.
+The repository already includes preprocessing, architecture, and metric tests, a machine-readable `evaluation/results.json`, a 20% held-out test evaluation, shared model/preprocessing code for the evaluation scripts, GitHub Actions, and automated notebook execution. These are existing capabilities, not pending recommendations.
+
+Further improvements should remain aligned with the repository's educational purpose.
 
 ---
 
