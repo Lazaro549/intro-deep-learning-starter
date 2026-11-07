@@ -93,7 +93,7 @@ The project includes automated evaluation and testing:
 - **5-fold cross-validation** for regression and classification.
 - **Shared TensorFlow/Keras architectures** across cross-validation and held-out evaluation.
 - **Held-out test set** for final evaluation.
-- **Unit tests** covering preprocessing, model architecture, and metrics.
+- **Automated tests** covering preprocessing, model architecture, metric ranges, end-to-end training/prediction for both tasks, input/output dimensions, and protection against fitting the scaler on held-out test data.
 - **Notebook smoke test** executed automatically in CI.
 - **GitHub Actions CI** validates tests and notebook execution.
 
