@@ -53,3 +53,23 @@ def test_perfect_classification():
 
     assert accuracy_score(y_true, y_pred) == 1.0
     assert roc_auc_score(y_true, y_prob) == 1.0
+
+
+def test_all_classification_metrics_are_finite_and_in_valid_range():
+    from sklearn.metrics import f1_score, precision_score, recall_score
+
+    y_true = np.array([0, 0, 1, 1, 1, 0])
+    y_pred = np.array([0, 1, 1, 1, 0, 0])
+    y_prob = np.array([0.1, 0.6, 0.8, 0.9, 0.4, 0.2])
+
+    metrics = {
+        "accuracy": accuracy_score(y_true, y_pred),
+        "precision": precision_score(y_true, y_pred, zero_division=0),
+        "recall": recall_score(y_true, y_pred, zero_division=0),
+        "f1": f1_score(y_true, y_pred, zero_division=0),
+        "roc_auc": roc_auc_score(y_true, y_prob),
+    }
+
+    for name, value in metrics.items():
+        assert np.isfinite(value), f"{name} must be finite"
+        assert 0.0 <= value <= 1.0, f"{name} must be in [0, 1]"
