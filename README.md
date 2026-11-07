@@ -50,7 +50,7 @@ If you'd rather use the classic Notebook interface: `jupyter notebook notebooks/
 
 ### Reproducible environment
 
-The project uses a pinned dependency set in [`requirements.txt`](requirements.txt). The documented target environment is **Python 3.12.3**. Install the exact direct dependency versions with:
+The project uses one pinned dependency set in [`requirements.txt`](requirements.txt) and **Python 3.12.3** as its single target interpreter. Both CI jobs use this exact Python version, matching the notebook metadata. Install the dependencies inside a virtual environment with:
 
 ```bash
 python -m pip install -r requirements.txt
@@ -58,7 +58,7 @@ python -m pip install -r requirements.txt
 
 The pinned versions include TensorFlow 2.21.0, Keras 3.15.1, NumPy 2.1.3, pandas 3.0.2, scikit-learn 1.8.0, and Matplotlib 3.10.8. Notebook and test tools are pinned in the same file so local runs and CI use one dependency specification.
 
-**Results provenance:** the currently committed `evaluation/results.json` was generated in a different environment: Python 3.14.2, TensorFlow 2.22.0-rc0, and scikit-learn 1.9.1. Those recorded metrics are historical results from that environment; they should not be described as having been generated with the pinned Python 3.12.3 environment. To regenerate them under the pinned environment, run `python -m evaluation.run_evaluation` after installing the requirements.
+**Results provenance:** the currently committed `evaluation/results.json` is a historical artifact generated with Python 3.14.2, TensorFlow 2.22.0-rc0, and scikit-learn 1.9.1. These values intentionally remain unchanged until the evaluation is rerun; they are not results from the repository's standardized Python 3.12.3 environment. To regenerate the metrics and update their recorded environment, run `python -m evaluation.run_evaluation` after installing the pinned requirements.
 
 ## Repo structure
 
