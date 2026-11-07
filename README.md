@@ -12,7 +12,8 @@ instead of just reading along.
 ## What's here
 
 [`notebooks/intro_to_deep_learning.ipynb`](notebooks/intro_to_deep_learning.ipynb) walks through the full course
-syllabus end-to-end — fully executed, with outputs and plots already baked in so it renders directly on GitHub:
+syllabus end-to-end. It contains the code and explanations for all six lessons. To see the plots and results,
+install the dependencies and run the notebook using the instructions below.
 
 | # | Lesson | Demonstrates |
 |---|---|---|
