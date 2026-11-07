@@ -195,24 +195,24 @@ The selected metrics are appropriate for the regression task.
 
 The classification experiment uses a sigmoid output and binary cross-entropy loss.
 
-The evaluation considers validation accuracy and ROC-AUC alongside classification-oriented metrics.
+The breast-cancer dataset uses the following target encoding:
 
-Recommended reporting metrics include:
+* **Class 0: Malignant**
+* **Class 1: Benign**
 
-* Accuracy
-* Precision
-* Recall
-* F1 score
-* ROC-AUC
-* Confusion matrix
+The notebook reports precision, recall, and F1 score separately for both classes, in addition to overall accuracy and ROC-AUC. This class-wise breakdown makes it possible to see whether performance differs between malignant and benign cases instead of relying on aggregate metrics alone.
 
-Accuracy alone should not be treated as sufficient evidence of classifier quality.
+The confusion matrix is also reported with **actual labels as rows** and **predicted labels as columns**. This makes false negatives and false positives easier to identify.
+
+For this dataset, recall for the malignant class (class 0) deserves particular attention: it measures the proportion of actual malignant cases that the classifier correctly identifies. This is an evaluation consideration, not a claim that the model is suitable for clinical use.
+
+Accuracy alone should not be treated as sufficient evidence of classifier quality. Metrics should be interpreted together, and the class labels and confusion-matrix orientation should always be stated explicitly.
 
 ### Assessment
 
 **Result: PASS**
 
-The model configuration is technically appropriate for binary classification.
+The evaluation reports class-wise precision, recall, and F1 score, alongside overall metrics and a confusion matrix. The model configuration is technically appropriate for an introductory binary-classification experiment.
 
 ---
 
@@ -392,7 +392,7 @@ The following improvements would further increase the project's portfolio value 
 1. Add repeated runs with different random seeds or confidence intervals to quantify variation beyond the current five-fold cross-validation standard deviation.
 2. Compare the neural networks against traditional baselines such as linear regression and logistic regression.
 3. Extend the automated tests to cover the complete evaluation pipeline and verify that preprocessing is fitted only on training data.
-4. Add a class-wise confusion matrix and clearly explain which class is treated as positive in the breast-cancer classification experiment.
+4. Execute the updated notebook and record the resulting class-wise metrics, overall metrics, and confusion matrix after verifying the run completes successfully.
 
 The repository already includes preprocessing, architecture, and metric tests, a machine-readable `evaluation/results.json`, a 20% held-out test evaluation, shared model/preprocessing code for the evaluation scripts, GitHub Actions, and automated notebook execution. These are existing capabilities, not pending recommendations.
 
